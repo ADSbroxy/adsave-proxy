@@ -1,205 +1,252 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>🎬 AD Save — تحميل الفيديوهات</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 <style>
-body {
-  font-family: "Poppins", sans-serif;
-  background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
-  background-attachment: fixed;
-  color: #fff;
-  margin: 0;
-  padding: 0;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
+  /* --- Reset & base --- */
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{
+    font-family:"Poppins",sans-serif;
+    background: linear-gradient(135deg,#1a1a2e,#16213e,#0f3460);
+    background-attachment: fixed;
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:22px;
+  }
 
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 15px;
-}
-.logo span {
-  background: #06d6a0;
-  color: #fff;
-  font-weight: bold;
-  font-size: 1.3em;
-  border-radius: 50%;
-  width: 45px;
-  height: 45px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 0 10px rgba(6,214,160,0.5);
-}
-.container {
-  background: rgba(255,255,255,0.08);
-  padding: 30px;
-  border-radius: 20px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.4);
-  max-width: 420px;
-  width: 90%;
-  backdrop-filter: blur(10px);
-}
+  /* --- Card --- */
+  .container{
+    width:100%;
+    max-width:460px;
+    background:rgba(255,255,255,0.06);
+    border-radius:18px;
+    padding:22px;
+    box-shadow:0 12px 40px rgba(0,0,0,0.45);
+    backdrop-filter: blur(8px);
+    text-align:center;
+  }
 
-h1 {
-  font-size: 1.8em;
-  margin-bottom: 10px;
-}
+  .logo{display:flex;align-items:center;gap:12px;justify-content:center;margin-bottom:8px}
+  .logo span{
+    width:56px;height:56px;border-radius:12px;
+    background:linear-gradient(90deg,#06d6a0,#2ac7ff);
+    display:grid;place-items:center;font-weight:800;color:#021323;font-size:20px;box-shadow:0 8px 24px rgba(0,0,0,0.35)
+  }
+  .logo h2{font-size:20px;margin:0;font-weight:700}
 
-.platforms {
-  margin: 10px 0;
-}
-.platforms img {
-  width: 32px;
-  margin: 0 5px;
-  opacity: 0.9;
-  transition: 0.3s;
-}
-.platforms img:hover {
-  transform: scale(1.1);
-  opacity: 1;
-}
+  h1{font-size:18px;margin:10px 0 6px}
 
-input {
-  width: 100%;
-  padding: 12px;
-  border-radius: 10px;
-  border: none;
-  outline: none;
-  font-size: 1em;
-  margin-top: 10px;
-  background: rgba(255,255,255,0.15);
-  color: #fff;
-}
-button {
-  background: #06d6a0;
-  border: none;
-  color: #fff;
-  font-size: 1.1em;
-  padding: 12px 20px;
-  border-radius: 10px;
-  cursor: pointer;
-  margin-top: 15px;
-  width: 100%;
-  transition: 0.3s;
-}
-button:hover {
-  background: #05b68a;
-}
-.result {
-  margin-top: 20px;
-}
-a.download {
-  background: #118ab2;
-  color: #fff;
-  padding: 10px 15px;
-  border-radius: 8px;
-  display: inline-block;
-  text-decoration: none;
-  margin-top: 10px;
-}
-a.download:hover {
-  background: #0c708f;
-}
-footer {
-  margin-top: 35px;
-  font-size: 0.85em;
-  opacity: 0.85;
-  max-width: 90%;
-  text-align: center;
-}
+  .platforms{margin:10px 0}
+  .platforms img{width:32px;margin:0 6px;opacity:0.95}
 
-.share {
-  margin-top: 15px;
-}
-.share button {
-  background: #118ab2;
-  font-size: 0.9em;
-  padding: 10px 15px;
-  width: auto;
-}
-.share button:hover {
-  background: #0c708f;
-}
+  p.info{color:rgba(255,255,255,0.85);font-size:14px;margin:8px 0 14px}
+
+  input[type="text"]{
+    width:100%;
+    padding:12px 14px;
+    border-radius:10px;
+    border:1px solid rgba(255,255,255,0.06);
+    background:rgba(0,0,0,0.18);
+    color:#fff;font-size:15px;margin-top:8px;
+    outline:none;
+  }
+
+  .actions{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap;justify-content:center}
+  button.btn{
+    background:#06d6a0;color:#021323;border:0;padding:10px 14px;border-radius:10px;font-weight:700;cursor:pointer;
+    transition:transform .12s ease,opacity .12s;
+  }
+  button.btn.secondary{background:transparent;border:1px solid rgba(255,255,255,0.06);color:#fff}
+  button.btn:active{transform:scale(.99)}
+  button.btn[disabled]{opacity:.6;cursor:default}
+
+  .result{margin-top:16px;min-height:46px;}
+  .download-link{display:inline-block;margin-top:8px;padding:10px 14px;border-radius:10px;background:linear-gradient(90deg,#118ab2,#0c708f);color:#fff;text-decoration:none;font-weight:700}
+
+  .notice{
+    margin-top:16px;
+    background:rgba(255,255,255,0.03);
+    padding:12px;border-radius:10px;font-size:13px;color:rgba(255,255,255,0.85)
+  }
+
+  .social{margin-top:14px;display:flex;gap:10px;justify-content:center;align-items:center}
+  .social a{color:#fff;text-decoration:none;padding:8px 12px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);font-weight:600}
+  .social a:hover{opacity:.95;transform:translateY(-2px)}
+
+  footer{margin-top:18px;font-size:13px;color:rgba(255,255,255,0.75)}
+
+  .spinner{display:inline-block;width:18px;height:18px;border:3px solid rgba(255,255,255,0.12);border-top-color:#06d6a0;border-radius:50%;animation:spin .9s linear infinite;vertical-align:middle;margin-left:8px}
+  @keyframes spin{to{transform:rotate(360deg)}}
+
+  @media(max-width:420px){
+    .container{padding:16px}
+    .logo span{width:48px;height:48px}
+    h1{font-size:16px}
+  }
 </style>
 </head>
 <body>
-  <div class="logo">
-    <span>AD</span>
-    <h2>Save</h2>
-  </div>
+  <div class="container" role="main" aria-live="polite">
+    <div class="logo" aria-hidden="true">
+      <span>AD</span>
+      <h2>Save</h2>
+    </div>
 
-  <div class="container">
-    <h1>📥 تحميل الفيديوهات</h1>
-    <div class="platforms">
+    <h1>📥 تحميل الفيديوهات — AD Save</h1>
+    <div class="platforms" aria-hidden="true">
       <img src="https://cdn-icons-png.flaticon.com/512/3046/3046127.png" alt="TikTok">
       <img src="https://cdn-icons-png.flaticon.com/512/1384/1384031.png" alt="Instagram">
       <img src="https://cdn-icons-png.flaticon.com/512/1384/1384005.png" alt="Facebook">
     </div>
 
-    <p>ألصق رابط الفيديو من أي موقع 👇</p>
-    <input type="text" id="urlInput" placeholder="https://..." />
-    <button onclick="downloadVideo()">تحميل الآن</button>
-    <div class="result" id="result"></div>
+    <p class="info">ألصق رابط الفيديو (ريلز أو منشور) من TikTok، Instagram أو Facebook ثم اضغط "تحميل الآن".</p>
 
-    <div class="share">
-      <button onclick="shareSite()">🔗 شارك الموقع</button>
+    <input id="urlInput" type="text" placeholder="https://..." aria-label="رابط الفيديو" />
+
+    <div class="actions" role="region" aria-label="إجراءات التحميل">
+      <button id="btnDownload" class="btn" onclick="startDownload()">تحميل الآن</button>
+      <button id="btnAudio" class="btn secondary" onclick="startAudio()">تحميل صوت (MP3)</button>
+      <button id="btnShare" class="btn secondary" onclick="shareSite()">شارك الموقع</button>
     </div>
+
+    <div class="result" id="result" aria-live="polite"></div>
+
+    <div class="notice" role="note">
+      ⚠️ تنبيه خصوصية وحقوق النشر: تأكد أن الفيديو منشور علنًا وأن لديك الحق في تنزيله أو أن استخدامك يندرج تحت الاستخدام العادل. موقع AD Save لا يتحمّل مسؤولية المواد المحمية بحقوق الطبع والنشر.
+    </div>
+
+    <div class="social" aria-label="تواصل مع المنصة">
+      <a href="https://www.instagram.com/aiss0_a" target="_blank" rel="noopener">تابعنا على Instagram</a>
+      <a href="https://www.facebook.com/ricardo.schwansteiger.aissa" target="_blank" rel="noopener">تواصل عبر Facebook</a>
+    </div>
+
+    <footer>© 2025 — تم التطوير بواسطة <strong>فريق AD</strong></footer>
   </div>
 
-  <footer>
-    ⚠️ هذا الموقع لا يخزن أي محتوى ولا ينتهك خصوصية المستخدمين.  
-    جميع الحقوق محفوظة © 2025 — تم التطوير بواسطة <b>فريق AD</b> 💚
-  </footer>
-
 <script>
-async function downloadVideo() {
-  const url = document.getElementById('urlInput').value.trim();
-  const resultDiv = document.getElementById('result');
-  if (!url) return alert("الرجاء إدخال رابط فيديو 🔗");
+  // ----- إعدادات -----
+  const SERVER = "https://adsave-proxy.onrender.com"; // سيرفرك في Render
+  const btnDownload = document.getElementById('btnDownload');
+  const btnAudio = document.getElementById('btnAudio');
+  const resultEl = document.getElementById('result');
+  const urlInput = document.getElementById('urlInput');
 
-  resultDiv.innerHTML = "⏳ جاري التحضير...";
-
-  try {
-    const apiURL = `https://savefrom.net/api/convert?url=${encodeURIComponent(url)}`;
-    const res = await fetch(apiURL);
-    const data = await res.json();
-
-    if (data && data.url) {
-      resultDiv.innerHTML = `
-        ✅ تم العثور على الفيديو:<br><b>${data.meta?.title || 'فيديو بدون عنوان'}</b><br>
-        <a class="download" href="${data.url}" target="_blank">تحميل مباشر ⬇️</a>
-      `;
+  function setLoading(isLoading, message) {
+    if (isLoading) {
+      resultEl.innerHTML = `<span>${message || 'جارٍ المعالجة...'}</span><span class="spinner" aria-hidden="true"></span>`;
+      btnDownload.disabled = true;
+      btnAudio.disabled = true;
     } else {
-      resultDiv.innerHTML = "❌ لم يتم العثور على الفيديو، تأكد من الرابط.";
+      btnDownload.disabled = false;
+      btnAudio.disabled = false;
     }
-  } catch (e) {
-    console.error(e);
-    resultDiv.innerHTML = "⚠️ حدث خطأ أثناء المعالجة، حاول مجددًا.";
   }
-}
 
-function shareSite() {
-  const shareData = {
-    title: "AD Save — تحميل الفيديوهات",
-    text: "جرب موقع AD Save لتحميل فيديوهات TikTok وInstagram وFacebook بسهولة 💚",
-    url: window.location.href
-  };
-  if (navigator.share) {
-    navigator.share(shareData).catch(err => console.log(err));
-  } else {
-    navigator.clipboard.writeText(window.location.href);
-    alert("📋 تم نسخ رابط الموقع!");
+  function showError(msg) {
+    resultEl.innerHTML = `<div style="color:#ffb3b3;font-weight:700">${msg}</div>`;
   }
-}
+
+  // Helper: call server endpoint and handle response
+  async function callServer(path, url) {
+    try {
+      const full = `${SERVER}${path}?url=${encodeURIComponent(url)}`;
+      const resp = await fetch(full, { method: 'GET' });
+      if (!resp.ok) {
+        // try to parse json error
+        let text = await resp.text();
+        try { const j = JSON.parse(text); if (j && j.error) throw new Error(j.error); } catch(e){}
+        throw new Error(`خطأ من الخادم (${resp.status})`);
+      }
+      const data = await resp.json();
+      return data;
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  // Start video download (asks server for direct download URL)
+  async function startDownload() {
+    const url = urlInput.value.trim();
+    if (!url) { alert('الرجاء إدخال رابط فيديو'); urlInput.focus(); return; }
+
+    setLoading(true, '⏳ جاري التحضير — تحميل الفيديو...');
+    resultEl.scrollIntoView({behavior:'smooth', block:'center'});
+
+    try {
+      const data = await callServer('/api/download', url);
+      // server expected to return { success: true, downloadUrl: '...' } or similar
+      const dl = data.downloadUrl || data.url || (data[0] && data[0].url);
+      const title = data.title || (data[0] && data[0].title) || 'فيديو للتحميل';
+      if (dl) {
+        // show link
+        resultEl.innerHTML = `<div style="font-weight:700;color:#dff7e6">✅ جاهز للتحميل: <br><a class="download-link" href="${dl}" target="_blank" rel="noopener">تحميل ${title}</a></div>`;
+      } else {
+        showError('لم يتم الحصول على رابط تحميل مباشر. جرّب رابط آخر أو انتظر قليلاً.');
+      }
+    } catch (err) {
+      console.error(err);
+      showError('فشل التحضير: ' + (err.message || 'خطأ غير معروف'));
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  // Start audio extraction
+  async function startAudio() {
+    const url = urlInput.value.trim();
+    if (!url) { alert('الرجاء إدخال رابط فيديو'); urlInput.focus(); return; }
+
+    setLoading(true, '⏳ جاري التحضير — استخراج الصوت...');
+    resultEl.scrollIntoView({behavior:'smooth', block:'center'});
+
+    try {
+      // Assuming server supports /api/download?url=...&kind=audio or separate /audio endpoint.
+      // We'll call /api/download and server should honor query param 'kind=audio' or return audio link.
+      const fullPath = `/api/download`;
+      const respData = await callServer(fullPath + "&kind=audio&audioFormat=m4a", url).catch(async _=>{
+        // fallback to trying /audio endpoint if server has it
+        return await callServer('/audio', url);
+      });
+
+      const dl = respData.downloadUrl || respData.url || (respData[0] && respData[0].url);
+      const title = respData.title || (respData[0] && respData[0].title) || 'ملف صوتي';
+      if (dl) {
+        resultEl.innerHTML = `<div style="font-weight:700;color:#dff7e6">✅ جاهز لتحميل الصوت: <br><a class="download-link" href="${dl}" target="_blank" rel="noopener">تحميل ${title}</a></div>`;
+      } else {
+        showError('لم يتم الحصول على رابط صوتي. جرّب رابط آخر.');
+      }
+    } catch (err) {
+      console.error(err);
+      showError('فشل استخراج الصوت: ' + (err.message || 'خطأ غير معروف'));
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  // Share site (native share or copy)
+  function shareSite(){
+    const data = {
+      title: "AD Save — تحميل الفيديوهات",
+      text: "جرّب AD Save لتنزيل الفيديوهات بسهولة.",
+      url: window.location.href
+    };
+    if (navigator.share) {
+      navigator.share(data).catch(()=>{});
+    } else {
+      navigator.clipboard.writeText(window.location.href).then(()=> alert('📋 تم نسخ رابط الموقع'));
+    }
+  }
+
+  // Accessibility: Enter key triggers download
+  urlInput.addEventListener('keydown', (e)=>{
+    if (e.key === 'Enter') startDownload();
+  });
 </script>
 </body>
 </html>
